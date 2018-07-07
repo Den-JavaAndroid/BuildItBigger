@@ -3,8 +3,8 @@ package com.example.jokelib;
 import java.util.Random;
 
 public class JokeTelling {
-    private String[] jokes;
-    private Random random;
+    private  String[] jokes;
+    private  Random random;
 
     public JokeTelling() {
         jokes = new String[3];
@@ -18,7 +18,7 @@ public class JokeTelling {
         return jokes;
     }
 
-    public String getRandomJoke() {
+    public  String getRandomJoke() {
         return jokes[random.nextInt(jokes.length)];
     }
 }
