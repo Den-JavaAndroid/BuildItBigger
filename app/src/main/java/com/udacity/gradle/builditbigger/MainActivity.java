@@ -1,35 +1,25 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.ProgressBar;
 
-import com.example.androidlibrary.JokeDisplayActivity;
 import com.example.jokelib.JokeTelling;
-import com.google.api.client.extensions.android.http.AndroidHttp;
-import com.google.api.client.extensions.android.json.AndroidJsonFactory;
-import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
-import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
-import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
-
-import java.io.IOException;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private JokeTelling jokeTelling;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        jokeTelling = new JokeTelling();
+        progressBar = findViewById(R.id.progress_bar);
+        progressBar.setVisibility(View.INVISIBLE);
     }
 
 
@@ -61,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 //        intent.putExtra(JokeDisplayActivity.INTENT_JOKE, joke);
 //        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //        startActivity(intent);
-        new EndpointsAsyncTask(this).execute();
+        new EndpointsAsyncTask(getApplicationContext()).execute();
 
     }
 
